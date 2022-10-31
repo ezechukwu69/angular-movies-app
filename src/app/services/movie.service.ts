@@ -14,8 +14,10 @@ export class MovieService {
   };
   constructor(private httpClient: HttpClient) {}
 
-  getMovies(): Observable<Title[]> {
-    return this.httpClient.get<Title[]>(`https://api.tvmaze.com/shows?page=1`);
+  getMovies(page: number): Observable<Title[]> {
+    return this.httpClient.get<Title[]>(
+      `https://api.tvmaze.com/shows?page=${page}`
+    );
   }
 
   searchMovies(query: string): Observable<Title[]> {
